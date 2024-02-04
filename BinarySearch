@@ -1,0 +1,54 @@
+//array must be sorted
+
+int BinarySearch(int* arr, int n, int target)
+{
+  int r = n-1;
+  int l = 0;
+   while(r>=l)
+  {
+    int m = l + (r-l)/2;
+    if(target == arr[m])
+    {
+      return m;
+    }
+   else if(target > arr[m])
+    {
+      l = m+1;
+    }
+    else
+    {
+      r = m-1;
+    }
+  }
+  
+  return -1;
+}
+
+#include <stdio.h>
+int main()
+{
+    int n;
+    printf("Enter the no. of elements : ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter the elements : ");
+    for(int i=0; i<n; i++)
+    {
+      scanf("%d", &arr[i]);
+    }
+    int target;
+    printf("Enter target element : ");
+    scanf("%d", &target);
+    
+    int result = BinarySearch(arr, n, target);
+    if(result == -1)
+    {
+      printf("Not found");
+    }
+    else
+    {
+      printf("%d found at index %d", target, result);
+    }
+}
+
+// 2 5 7 8 9
